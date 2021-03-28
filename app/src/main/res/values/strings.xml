@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TODO-App</string>
+    <string name="app_name">Password Manager</string>
 
     <!-- login Activity -->
     <string name="loginActivity_string_loginUsername">Username</string>

@@ -1,4 +1,4 @@
-package com.nphilip9.todo_app.Manager;
+package com.nphilip9.passwordmanager.Manager;
 
 import java.io.File;
 import java.io.FileWriter;

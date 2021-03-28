@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nphilip9.todo_app">
+    package="com.nphilip9.passwordmanager">
 
     <application
         android:allowBackup="true"

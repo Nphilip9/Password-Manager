@@ -1,4 +1,4 @@
-package com.nphilip9.todo_app;
+package com.nphilip9.passwordmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.nphilip9.todo_app.Manager.RegistrationManager;
+import com.nphilip9.passwordmanager.Manager.RegistrationManager;
 
 import java.io.IOException;
 
