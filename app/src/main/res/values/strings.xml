@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TODO-App</string>
+
+    <!-- login Activity -->
+    <string name="loginActivity_string_loginUsername">Username</string>
+    <string name="loginActivity_string_loginPassword">Password</string>
+    <string name="loginActivity_string_loginButton">Login</string>
+    <string name="loginActivity_string_registerButton">Register</string>
+
+    <!-- Register Activity -->
+    <string name="registerActivity_string_loginUsername">Username</string>
+    <string name="registerActivity_string_loginPassword">Password</string>
+    <string name="registerActivity_string_registerButton">Register</string>
 </resources>
