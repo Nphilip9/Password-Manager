@@ -1,17 +1,29 @@
 package com.nphilip9.passwordmanager;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.nphilip9.passwordmanager.Manager.LoginManager;
+import com.nphilip9.passwordmanager.Manager.UserManager;
+
+import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText loginActivity_editText_username, loginActivity_editText_password;
     Button loginActivity_button_login, loginActivity_button_register;
 
+    LoginManager loginManager = new LoginManager();
+    UserManager userManager = new UserManager();
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +35,30 @@ public class LoginActivity extends AppCompatActivity {
         loginActivity_button_register = findViewById(R.id.loginActivity_button_register);
 
         loginActivity_button_register.setOnClickListener(v -> startRegisterActivity());
+
+        loginActivity_button_login.setOnClickListener(v -> {
+            String username = loginActivity_editText_username.getText().toString();
+            String password = loginActivity_editText_password.getText().toString();
+            try {
+                boolean checkCredentials = loginManager.checkCredentials(getFilesDir() + "/Users.txt", username, password);
+                if(checkCredentials) {
+                    Toast.makeText(getApplicationContext(), "Success!x", Toast.LENGTH_SHORT).show();
+                    userManager.logUser(getCacheDir().toString(), username);
+                    startHomeActivity();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void startRegisterActivity() {
         Intent registerActivityIntent = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(registerActivityIntent);
+    }
+
+    private void startHomeActivity() {
+        Intent homeActivityIntent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(homeActivityIntent);
     }
 }
