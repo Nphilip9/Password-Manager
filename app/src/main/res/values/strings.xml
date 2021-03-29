@@ -11,4 +11,7 @@
     <string name="registerActivity_string_loginUsername">Username</string>
     <string name="registerActivity_string_loginPassword">Password</string>
     <string name="registerActivity_string_registerButton">Register</string>
+
+    <!-- Home Activity -->
+    <bool name="homeActivity_boolean_fabClickable">true</bool>
 </resources>

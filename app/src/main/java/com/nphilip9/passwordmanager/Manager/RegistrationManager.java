@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class RegistrationManager {
 
-    public boolean createUser(String filesDir, String username, String password) throws IOException {
+    public boolean createUser(String filesDir, String username, String password) throws Exception {
         boolean usersDir = createUsersDir(filesDir + "/UserDirs");
         boolean userPrivateDir = createUserPrivateDir(filesDir + "/UserDirs", username);
         boolean privateUserFile = createPrivateUserFile(filesDir + "/UserDirs", username);
@@ -38,7 +38,7 @@ public class RegistrationManager {
         }
     }
 
-    private boolean createUserListFile(String path, String username, String password) throws IOException {
+    private boolean createUserListFile(String path, String username, String password) throws Exception {
         if(new File(path + "/Users.txt").exists()) {
             FileWriter fileWriter = new FileWriter(path + "/Users.txt", true);
             fileWriter.append(username).append("#-#").append(password).append("\n");
@@ -49,6 +49,7 @@ public class RegistrationManager {
                 FileWriter fileWriter = new FileWriter(path + "/Users.txt", true);
                 fileWriter.append(username).append("#-#").append(password).append("\n");
                 fileWriter.close();
+                return true;
             }
         }
         return true;

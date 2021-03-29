@@ -13,8 +13,6 @@ import android.widget.Toast;
 import com.nphilip9.passwordmanager.Manager.LoginManager;
 import com.nphilip9.passwordmanager.Manager.UserManager;
 
-import java.io.IOException;
-
 public class LoginActivity extends AppCompatActivity {
 
     EditText loginActivity_editText_username, loginActivity_editText_password;
@@ -42,11 +40,12 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 boolean checkCredentials = loginManager.checkCredentials(getFilesDir() + "/Users.txt", username, password);
                 if(checkCredentials) {
-                    Toast.makeText(getApplicationContext(), "Success!x", Toast.LENGTH_SHORT).show();
                     userManager.logUser(getCacheDir().toString(), username);
+                    Toast.makeText(getApplicationContext(), "Welcome Back " + userManager.getCurrentUser(
+                                            getCacheDir().toString()), Toast.LENGTH_SHORT).show();
                     startHomeActivity();
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });

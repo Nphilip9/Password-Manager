@@ -6,7 +6,6 @@ import androidx.annotation.RequiresApi;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class LoginManager {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public boolean checkCredentials(String filesPath, String username, String password)
-            throws IOException {
+            throws Exception {
         ArrayList<String> arrayList = new ArrayList<>();
         int lines = 0;
         FileReader fileReader = new FileReader(filesPath);
