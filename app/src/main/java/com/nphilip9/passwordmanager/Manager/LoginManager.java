@@ -10,13 +10,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-import static java.nio.file.Paths.get;
-
 public class LoginManager {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public boolean checkCredentials(String filesPath, String username, String password)
-            throws Exception {
+    public boolean checkCredentials(String filesPath,
+                                    String username, String password) throws Exception {
         ArrayList<String> arrayList = new ArrayList<>();
         int lines = 0;
         FileReader fileReader = new FileReader(filesPath);

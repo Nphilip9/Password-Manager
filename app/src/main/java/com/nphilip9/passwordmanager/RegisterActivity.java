@@ -28,14 +28,18 @@ public class RegisterActivity extends AppCompatActivity {
         registerActivity_button_register.setOnClickListener(v -> {
             String username = registerActivity_editText_username.getText().toString();
             String password = registerActivity_editText_password.getText().toString();
-            try {
-                boolean registration = registrationManager.createUser(getFilesDir().toString(), username, password);
-                if(registration) {
-                    Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
-                    finish();
+            if (username.length() != 0 && password.length() != 0) {
+                try {
+                    boolean registration = registrationManager.createUser(getFilesDir().toString(), username, password);
+                    if (registration) {
+                        Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } else {
+                Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -45,9 +49,4 @@ public class RegisterActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
     }
-
-//    private void startLoginActivity() {
-//        Intent loginActivityIntent = new Intent(getApplicationContext(), LoginActivity.class);
-//        startActivity(loginActivityIntent);
-//    }
 }

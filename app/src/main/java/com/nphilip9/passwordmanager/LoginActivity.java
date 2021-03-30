@@ -37,16 +37,20 @@ public class LoginActivity extends AppCompatActivity {
         loginActivity_button_login.setOnClickListener(v -> {
             String username = loginActivity_editText_username.getText().toString();
             String password = loginActivity_editText_password.getText().toString();
-            try {
-                boolean checkCredentials = loginManager.checkCredentials(getFilesDir() + "/Users.txt", username, password);
-                if(checkCredentials) {
-                    userManager.logUser(getCacheDir().toString(), username);
-                    Toast.makeText(getApplicationContext(), "Welcome Back " + userManager.getCurrentUser(
-                                            getCacheDir().toString()), Toast.LENGTH_SHORT).show();
-                    startHomeActivity();
+            if (username.length() != 0 && password.length() != 0) {
+                try {
+                    boolean checkCredentials = loginManager.checkCredentials(getFilesDir() + "/Users.txt", username, password);
+                    if (checkCredentials) {
+                        userManager.logUser(getCacheDir().toString(), username);
+                        Toast.makeText(getApplicationContext(), "Welcome Back " + userManager.getCurrentUser(
+                                getCacheDir().toString()), Toast.LENGTH_SHORT).show();
+                        startHomeActivity();
+                    }
+                } catch(Exception e){
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } else {
+                Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
             }
         });
     }
