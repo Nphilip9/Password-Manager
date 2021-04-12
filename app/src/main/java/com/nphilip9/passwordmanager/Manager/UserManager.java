@@ -14,7 +14,7 @@ public class UserManager {
 
     public void logUser(String cacheDir, String username) throws IOException {
         boolean currentUser = new File(cacheDir + "/currentUser.txt").createNewFile();
-        if(currentUser) {
+        if (currentUser) {
             FileWriter fileWriter = new FileWriter(cacheDir + "/currentUser.txt", true);
             fileWriter.append(username);
             fileWriter.close();

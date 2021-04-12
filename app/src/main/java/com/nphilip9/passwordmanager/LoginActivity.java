@@ -27,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
+        userManager.deleteUser(getCacheDir().toString());
+
         loginActivity_editText_username = findViewById(R.id.registerActivity_editText_username);
         loginActivity_editText_password = findViewById(R.id.registerActivity_editText_password);
         loginActivity_button_login = findViewById(R.id.loginActivity_button_login);

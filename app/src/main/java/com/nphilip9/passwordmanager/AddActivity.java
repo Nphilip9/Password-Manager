@@ -36,7 +36,13 @@ public class AddActivity extends AppCompatActivity {
             String password = addActivity_editText_password.getText().toString();
             if(username.length() != 0 && password.length() != 0) {
                 try {
-                    add(username, password);
+                    boolean add = add(username, password);
+                    if(add) {
+                        Toast.makeText(getApplicationContext(), "Added successfully", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Error try again", Toast.LENGTH_SHORT).show();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -47,10 +53,11 @@ public class AddActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void add(String username, String password) throws IOException {
+    public boolean add(String username, String password) throws IOException {
         FileWriter fileWriter = new FileWriter(getFilesDir() + "/UserDirs/" +
                 userManager.getCurrentUser(getCacheDir().toString()) + "/UsernamePasswords.txt", true);
         fileWriter.append(username).append("#-#").append(password).append("\n");
         fileWriter.close();
+        return true;
     }
 }
